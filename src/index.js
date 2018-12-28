@@ -18,12 +18,10 @@ const history = createBrowserHistory();
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
-    console.log('user has signed in or up', user);
     const { email } = user;
     store.dispatch(logUser(email));
     history.push('/app');
   } else {
-    console.log('user has signed out or still needs to sign in.')
     history.replace('/signin');
   }
 });
@@ -31,11 +29,9 @@ firebaseApp.auth().onAuthStateChanged(user => {
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <div>
-        <Route path="/app" component={App} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/signup" component={SignUp} />
-      </div>
+      <Route path="/app" component={App} />
+      <Route path="/signin" component={SignIn} />
+      <Route path="/signup" component={SignUp} />
     </BrowserRouter>
   </Provider>, document.getElementById('root')
 );

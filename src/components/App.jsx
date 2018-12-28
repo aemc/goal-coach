@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { firebaseApp } from '../firebase';
 
 class App extends Component {
-  signOut() {
+  signOut = e => {
     firebaseApp.auth().signOut();
-  }
+  };
 
   render() {
     return (
       <div>
         <button
           className="btn btn-danger"
-          onClick={() => this.signOut()}
+          onClick={this.signOut}
         >
           Sign Out
         </button>
@@ -22,7 +22,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {};
 }
 
